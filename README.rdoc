@@ -36,3 +36,9 @@ Stock App
 
 Source of stock price:
 https://financialmodelingprep.com/developer/docs/#Stock-Price
+
+* User login
+* Admin login
+* Mailer
+* Sidekiq
+* RSpec
