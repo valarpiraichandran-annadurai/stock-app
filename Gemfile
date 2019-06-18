@@ -12,6 +12,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'rake', '< 11.0'
+
 gem 'bootstrap', '~> 4.3.1'
 
 # Use jquery as the JavaScript library
@@ -22,6 +24,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+gem 'bcrypt-ruby', '3.1.2'
 
 gem 'sendgrid-ruby'
 
