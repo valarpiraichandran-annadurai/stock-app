@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-6 offset-3 my-3">
+        <h1>This is Home page</h1>
+        <%= form_tag("home/send_mail", method: "post") do %>
+        <button type="submit" class="btn btn-primary">Send test email</button>
+        <% end %>
+    </div>
+    <div class="col-6 offset-3 my-3">
+        <ul class="symbols">
+            <%= render @stock_symbols %>
+        </ul>
+    </div>
+</div>

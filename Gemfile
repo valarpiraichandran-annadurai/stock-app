@@ -31,6 +31,7 @@ gem 'sendgrid-ruby'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 
+gem 'faraday'
 
 # gem 'simple_form'
 

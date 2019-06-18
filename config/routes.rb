@@ -5,14 +5,15 @@ Rails.application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  root 'home#index'
+  root 'stock_symbol#index'
 
-  get 'home/index'
+  get 'stock_symbol/index'
   get 'home/show'
   post 'home/send_mail'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :stock_symbol
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

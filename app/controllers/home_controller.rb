@@ -2,7 +2,7 @@ class HomeController < ApplicationController
 
 
   def index
-    user = Object.new
+    
   end
 
   def show
