@@ -1,6 +1,6 @@
 module SessionsHelper
   def sign_in(user)
-    session[:user_email] = user.email
+    session[:user_id] = user.id
     self.current_user = user
   end
 
@@ -13,7 +13,7 @@ module SessionsHelper
     end
 
     def current_user
-        @current_user ||= User.find_by(email: session[:user_email])
+        @current_user ||= User.find_by(id: session[:user_id])
     end
 
     def current_user?(user)
@@ -21,7 +21,7 @@ module SessionsHelper
     end
 
     def sign_out
-        session.delete(:user_email)
+        session.delete(:user_id)
         self.current_user = nil
     end
 

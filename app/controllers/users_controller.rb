@@ -7,12 +7,16 @@ class UsersController < ApplicationController
 
 # Show single user detail
   def show
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue
+      render 'not_found'
+    end
   end
 
   # User list page
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
 # SignUp POST
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
     if @user.save
         sign_in @user
         flash[:success] = "Welcome to the Stock price App!"
-        SendGridMailer.send_welcome_mail(@user.email)
+        SendGridMailer.send_welcome_mail(@user.email).deliver_later
         redirect_to @user
     else
         render 'new'

@@ -9,11 +9,10 @@ Rails.application.routes.draw do
 
   get 'home/index'
   get 'home/show'
+  post 'home/send_mail'
 
-  get 'sessions/new'
-  get 'sessions/create'
-
-  resources :users, :sessions
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
