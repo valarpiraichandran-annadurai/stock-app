@@ -8,7 +8,6 @@ class StockSymbolController < ApplicationController
   def show
     @stock_symbol = StockSymbol.find(params[:id])
     client = FinanceAPI::Base.client
-    resp = client.get_realtime_price(symbol: @stock_symbol.symbol)
-    puts resp
+    @resp = client.get_realtime_price(symbol: @stock_symbol.symbol)[:body]
   end
 end
