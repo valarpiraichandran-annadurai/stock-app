@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190618084528) do
+ActiveRecord::Schema.define(version: 20190618100200) do
 
   create_table "stock_histories", force: :cascade do |t|
     t.integer  "symbol_id"
@@ -21,11 +21,16 @@ ActiveRecord::Schema.define(version: 20190618084528) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "stock_histories", ["symbol_id", "date"], name: "index_stock_histories_on_symbol_id_and_date"
+
   create_table "stock_symbols", force: :cascade do |t|
     t.string   "symbol"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "name"
   end
+
+  add_index "stock_symbols", ["symbol"], name: "index_stock_symbols_on_symbol", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -35,5 +40,7 @@ ActiveRecord::Schema.define(version: 20190618084528) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

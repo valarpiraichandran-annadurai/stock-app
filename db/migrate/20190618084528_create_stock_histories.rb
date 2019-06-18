@@ -7,5 +7,8 @@ class CreateStockHistories < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+
+    add_index :stock_histories, [:symbol_id, :date]
   end
 end

@@ -5,5 +5,7 @@ class CreateStockSymbols < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :stock_symbols, :symbol, unique: true
   end
 end
