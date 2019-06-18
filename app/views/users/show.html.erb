@@ -7,6 +7,11 @@
             <span>
                 <%= @user.email %>
             </span>
+            <div class="lead">
+                <% if @user.admin? %>
+                Admin User
+                <% end %>
+            </div>
         </section>
     </div>
 </div>

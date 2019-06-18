@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190618044539) do
+ActiveRecord::Schema.define(version: 20190618084528) do
+
+  create_table "stock_histories", force: :cascade do |t|
+    t.integer  "symbol_id"
+    t.decimal  "price"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stock_symbols", force: :cascade do |t|
+    t.string   "symbol"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

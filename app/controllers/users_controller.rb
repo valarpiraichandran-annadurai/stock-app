@@ -2,7 +2,9 @@ class UsersController < ApplicationController
   
   # SignUp Form
   def new
-    @user = User.new    
+    redirect_to(root_url) if signed_in?
+    
+    @user = User.new
   end
 
 # Show single user detail
