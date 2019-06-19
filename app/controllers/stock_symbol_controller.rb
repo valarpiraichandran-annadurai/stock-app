@@ -12,9 +12,13 @@ class StockSymbolController < ApplicationController
 
     if @stock_symbol.updated_at.nil? or (Time.now.getutc.to_i - @stock_symbol.updated_at.to_i) > two_minutes 
       client = FinanceAPI::Base.client
-      @resp = client.get_realtime_price(symbol: @stock_symbol.symbol)[:body]
+      begin
+        @resp = client.get_realtime_price(symbol: @stock_symbol.symbol)[:body]
 
-      @stock_symbol.update(:price => @resp['price'])
+        @stock_symbol.update(:price => @resp['price'])
+      rescue
+        puts "Error while fetching realtime price"
+      end
     end
   end
 end

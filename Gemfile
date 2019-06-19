@@ -29,7 +29,7 @@ gem 'bcrypt-ruby', '3.1.2'
 
 gem 'sendgrid-ruby'
 gem 'will_paginate', '~> 3.1.0'
-gem 'bootstrap-will_paginate'
+gem 'will_paginate-bootstrap4'
 
 gem 'faraday'
 
