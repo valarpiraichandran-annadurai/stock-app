@@ -23,12 +23,8 @@ class RealtimePriceFetchJob < ActiveJob::Base
 
     @stock_symbols = StockSymbol.where(:deleted => false)
 
-    count = 0
-
     @stock_symbols.each do |symbol|      
       if symbol_hash.key?(symbol.symbol)
-        sleep(0.2) if count % 100 == 0
-        count += 1
         # puts "Updating price for #{symbol.symbol}, #{symbol_hash[symbol.symbol]}"
         symbol.update(:price => symbol_hash[symbol.symbol])
       end

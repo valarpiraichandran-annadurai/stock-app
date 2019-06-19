@@ -35,4 +35,4 @@ class StockSymbolFetchJob < ActiveJob::Base
 end
 
 # Fetch all stock symbols at startup
-StockSymbolFetchJob.perform_now
+# StockSymbolFetchJob.perform_now

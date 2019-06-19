@@ -1,5 +1,5 @@
 <li>
-  <%= link_to stock_symbol.name, stock_symbol %>
+  <%= link_to stock_symbol.name, stock_symbol %><span>(<%= stock_symbol.symbol %>)</span>, <span>$<%= stock_symbol.price %></span>
   <% if !current_user.nil? && current_user.admin? %>
     | <%= link_to "delete", stock_symbol, method: :delete,
                                   data: { confirm: "You sure?" } %>

@@ -2,11 +2,25 @@
     <div class="col-6 offset-3">
         <section>
             <h2>
-                <%= @stock_symbol.symbol %> : <%= @stock_symbol.name %>
+                <%= @stock_symbol.symbol %> :
+                <%= @stock_symbol.name %>
             </h2>
             <span>
-                Price : $<%= @stock_symbol.price %>
+                Price : $
+                <%= @stock_symbol.price %>
             </span>
         </section>
+    </div>
+    <div class="col-6 offset-3 my-3">
+        <% if @stock_symbol.stock_history.any? %>
+        <h3>Stock Price History (
+            <%= @stock_symbol.stock_history.count %>)</h3>
+        <%= will_paginate @stock_history %>
+        <ul class="stock_history">
+            <%= render @stock_history %>
+        </ul>
+        <% else %>
+            <span class="h3">Stock price history not available</span>
+        <% end %>
     </div>
 </div>

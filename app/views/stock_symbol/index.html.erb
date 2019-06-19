@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="col-6 offset-3 my-3">
+    <div class="col-8 offset-2 my-3">
         <h1>Company Names</h1>
         <%= form_tag("home/send_mail", method: "post") do %>
         <button type="submit" class="hide btn btn-primary">Send test email</button>
         <% end %>
     </div>
-    <div class="col-6 offset-3 my-3">
+    <div class="col-8 offset-2 my-3">
         <%= will_paginate %>
         <ul class="symbols">
             <%= render @stock_symbol %>
