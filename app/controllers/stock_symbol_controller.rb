@@ -2,7 +2,7 @@ require 'finance_api/base'
 
 class StockSymbolController < ApplicationController
   def index
-    @stock_symbols = StockSymbol.paginate(page: params[:page])
+    @stock_symbol = StockSymbol.paginate(page: params[:page], per_page: 50)
   end
 
   def show

@@ -25,10 +25,12 @@ class RealtimePriceFetchJob < ActiveJob::Base
 
     @stock_symbols.each do |symbol|      
       if symbol_hash.key?(symbol.symbol)
-        puts "Updating price for #{symbol.symbol}"
+        # puts "Updating price for #{symbol.symbol}"
         symbol.update(:price => @resp['price'])
       end
     end
+
+    puts "Realtime stock price updated successfully..."
   end
 end
 

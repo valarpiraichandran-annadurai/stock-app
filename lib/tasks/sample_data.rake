@@ -35,30 +35,6 @@ def make_stock_symbols
         {
             :symbol => "KMI",
             :name => "Kinder Morgan Inc."
-        },
-        {
-            :symbol => "INTC",
-            :name => "Intel Corporation"
-        },
-        {
-            :symbol => "MU",
-            :name => "Micron Technology Inc."
-        },
-        {
-            :symbol => "GDX",
-            :name => "VanEck Vectors Gold Miners"
-        },
-        {
-            :symbol => "GE",
-            :name => "General Electric Company"
-        },
-        {
-            :symbol => "BAC",
-            :name => "Bank of America Corporation"
-        },
-        {
-            :symbol => "EEM",
-            :name => "iShares MSCI Emerging Index Fund"
         }].each do |item|
           StockSymbol.create(item)
         end

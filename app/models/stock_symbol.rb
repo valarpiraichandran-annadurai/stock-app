@@ -1,5 +1,5 @@
 class StockSymbol < ActiveRecord::Base
-  has_many :stockhistory, dependent: :destroy
+  has_many :stock_history, dependent: :destroy, foreign_key: :symbol_id
 
   before_save { self.symbol = symbol.upcase }
 

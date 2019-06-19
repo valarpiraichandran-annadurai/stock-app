@@ -28,8 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt-ruby', '3.1.2'
 
 gem 'sendgrid-ruby'
-gem 'will_paginate', '3.0.4'
-gem 'bootstrap-will_paginate', '0.0.9'
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate'
 
 gem 'faraday'
 
