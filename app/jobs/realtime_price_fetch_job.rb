@@ -4,15 +4,30 @@ class RealtimePriceFetchJob < ActiveJob::Base
   def perform(*args)
     # Fetch realtime stock price every 3 minutes
     puts "Updating Realtime stock price...."
-    @stock_symbols = StockSymbol.all
-
     client = FinanceAPI::Base.client
 
-    @stock_symbols.each do |symbol|
-      puts "Updating for #{symbol.symbol}"
-      @resp = client.get_realtime_price(symbol: symbol.symbol)[:body]
+    @resp = client.get_realtime_price_list()[:body]
 
-      symbol.update(:price => @resp['price'])
+    if !@resp.key?("stockList")
+      puts "Error while fetching realtime stock price.."
+      return
+    elsif @resp["stockList"].length < 1
+      puts "Realtime stock price not available.."
+      return
+    end
+
+    symbol_hash = {}
+
+    puts "Found #{@resp["stockList"].length} symbols..."
+    @resp["stockList"].each { |symbol| symbol_hash[symbol["symbol"]] = symbol["price"] }
+
+    @stock_symbols = StockSymbol.all
+
+    @stock_symbols.each do |symbol|      
+      if symbol_hash.key?(symbol.symbol)
+        puts "Updating price for #{symbol.symbol}"
+        symbol.update(:price => @resp['price'])
+      end
     end
   end
 end
