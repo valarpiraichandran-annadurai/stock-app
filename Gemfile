@@ -33,6 +33,9 @@ gem 'bootstrap-will_paginate', '0.0.9'
 
 gem 'faraday'
 
+gem 'sidekiq'
+gem "sidekiq-cron", "~> 1.1"
+
 # gem 'simple_form'
 
 # Use ActiveModel has_secure_password
@@ -50,7 +53,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
 
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails', '~> 2.13'
 end
 
 group :development do

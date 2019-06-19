@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   end
 
   def send_mail
-    SendGridMailer.send_mail
+    SendWelcomeEmailJob.perform_now(nil)
 
     redirect_to root_url
   end

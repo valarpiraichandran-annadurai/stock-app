@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if @user.save
         sign_in @user
         flash[:success] = "Welcome to the Stock price App!"
-        SendGridMailer.send_welcome_mail(@user.email).deliver_later
+        SendWelcomeEmailJob.perform_now(@user.email)
         redirect_to @user
     else
         render 'new'

@@ -35,5 +35,7 @@ module Stock
     # Load custom modules from lib/ directory
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

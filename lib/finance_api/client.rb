@@ -18,8 +18,6 @@ module FinanceAPI
       @client = Faraday.new(:url => self.hostname)
     end
 
-
-
     def get(url_or_path, params = nil)
       response = @client.get url_or_path do |req|
         req.url(url_or_path)
@@ -45,6 +43,23 @@ module FinanceAPI
       get("stock/real-time-price/#{symbol}", nil)
     end
 
+    def get_realtime_price_list
+      # GET
+      # https://financialmodelingprep.com/api/v3/stock/real-time-price
+      get("stock/real-time-price", nil)
+    end
+
+    def get_symbol_list
+      # GET
+      # https://financialmodelingprep.com/api/v3/company/stock/list
+      get("company/stock/list", nil)
+    end
+
+    def get_price_history(symbol: nil)
+      # GET
+      # https://financialmodelingprep.com/api/v3/historical-price-full/AAPL?serietype=line
+      get("historical-price-full/#{symbol}?serietype=line", nil)
+    end
 
     protected
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190618100200) do
+ActiveRecord::Schema.define(version: 20190619044201) do
 
   create_table "stock_histories", force: :cascade do |t|
     t.integer  "symbol_id"
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20190618100200) do
 
   create_table "stock_symbols", force: :cascade do |t|
     t.string   "symbol"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "name"
+    t.decimal  "price"
+    t.datetime "last_updated"
   end
 
   add_index "stock_symbols", ["symbol"], name: "index_stock_symbols_on_symbol", unique: true
