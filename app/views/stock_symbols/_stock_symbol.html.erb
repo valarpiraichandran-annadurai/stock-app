@@ -1,3 +1,7 @@
 <li>
   <%= link_to stock_symbol.name, stock_symbol %>
+  <% if !current_user.nil? && current_user.admin? %>
+    | <%= link_to "delete", stock_symbol, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
 </li>

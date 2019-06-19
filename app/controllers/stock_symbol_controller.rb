@@ -2,11 +2,15 @@ require 'finance_api/base'
 
 class StockSymbolController < ApplicationController
   def index
-    @stock_symbol = StockSymbol.paginate(page: params[:page], per_page: 50)
+    @stock_symbol = StockSymbol.where(:deleted => false).paginate(page: params[:page], per_page: 50)
   end
 
   def show
     @stock_symbol = StockSymbol.find(params[:id])
+
+    if @stock_symbol.deleted
+      redirect_to root_url
+    end
 
     two_minutes = 2 * 60
 
@@ -20,5 +24,11 @@ class StockSymbolController < ApplicationController
         puts "Error while fetching realtime price"
       end
     end
+  end
+
+  def destroy
+    StockSymbol.find(params[:id]).update(:deleted => true)
+    flash[:success] = "Company deleted."
+    redirect_to root_url
   end
 end

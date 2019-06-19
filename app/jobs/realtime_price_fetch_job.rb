@@ -21,12 +21,16 @@ class RealtimePriceFetchJob < ActiveJob::Base
     puts "Found #{@resp["stockList"].length} symbols..."
     @resp["stockList"].each { |symbol| symbol_hash[symbol["symbol"]] = symbol["price"] }
 
-    @stock_symbols = StockSymbol.all
+    @stock_symbols = StockSymbol.where(:deleted => false)
+
+    count = 0
 
     @stock_symbols.each do |symbol|      
       if symbol_hash.key?(symbol.symbol)
-        # puts "Updating price for #{symbol.symbol}"
-        symbol.update(:price => @resp['price'])
+        sleep(0.2) if count % 100 == 0
+        count += 1
+        # puts "Updating price for #{symbol.symbol}, #{symbol_hash[symbol.symbol]}"
+        symbol.update(:price => symbol_hash[symbol.symbol])
       end
     end
 
