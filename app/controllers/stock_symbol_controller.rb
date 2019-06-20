@@ -13,6 +13,10 @@ class StockSymbolController < ApplicationController
     end
 
     @stock_history = @stock_symbol.stock_history.paginate(page: params[:page], per_page: 50)
+
+    if !@stock_symbol.stock_history.any?
+      StockPriceHistoryJob.perform_later(@stock_symbol)
+    end
   end
 
   def destroy

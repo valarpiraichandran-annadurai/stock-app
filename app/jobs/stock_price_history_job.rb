@@ -1,14 +1,17 @@
 class StockPriceHistoryJob < ActiveJob::Base
   queue_as :default
 
-  def perform(*args)
+  def perform(stock_symbol)
     puts "Updating Realtime stock price...."
     client = FinanceAPI::Base.client
 
     symbol_hash = {}
 
-
-    @stock_symbols = StockSymbol.where(:deleted => false).limit(10)
+    if stock_symbol.nil?
+      @stock_symbols = StockSymbol.where(:deleted => false).limit(10)
+    else
+      @stock_symbols = [stock_symbol]
+    end
 
     @stock_symbols.each do |stock_symbol|
         @resp = client.get_price_history(symbol: stock_symbol.symbol)[:body]
