@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     begin
       @user = User.find(params[:id])
     rescue
-      render 'not_found'
+      render 'shared/not_found'
     end
   end
 

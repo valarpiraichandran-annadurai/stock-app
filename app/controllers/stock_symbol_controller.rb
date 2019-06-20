@@ -6,10 +6,16 @@ class StockSymbolController < ApplicationController
   end
 
   def show
-    @stock_symbol = StockSymbol.find(params[:id])
+    begin
+      @stock_symbol = StockSymbol.find(params[:id])
+    rescue
+      puts "Stock symbol not found"
+      render 'shared/not_found'
+      return
+    end
 
     if @stock_symbol.deleted
-      redirect_to root_url
+      render 'shared/not_found'
     end
 
     @stock_history = @stock_symbol.stock_history.paginate(page: params[:page], per_page: 50)
