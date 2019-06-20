@@ -36,3 +36,4 @@ end
 
 # Fetch all stock symbols at startup
 # StockSymbolFetchJob.perform_now
+# StockSymbolFetchJob.perform_later

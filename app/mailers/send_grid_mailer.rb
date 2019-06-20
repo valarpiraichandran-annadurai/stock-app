@@ -1,5 +1,6 @@
 class SendGridMailer < ApplicationMailer
   include SendGrid
+  require 'sendgrid-ruby'
 
   def send_mail
     from = Email.new(email: 'no-reply@stockprice.com')
@@ -11,7 +12,7 @@ class SendGridMailer < ApplicationMailer
   end
 
   def send_welcome_mail(to_email)
-    to_email ||= 'valarpiraichandran.annadurai@freshworks.com'
+    to_email = 'valarpiraichandran.annadurai@freshworks.com' if to_email.nil?
     from = Email.new(email: 'no-reply@stockprice.com')
     to = Email.new(email: to_email)
     subject = 'Welcome to Stock Price App'
@@ -24,10 +25,8 @@ class SendGridMailer < ApplicationMailer
   private
 
     def call_send_grid (from, subject, to, content)
-      require 'sendgrid-ruby'
 
       mail = Mail.new(from, subject, to, content)
-
       sg = SendGrid::API.new(api_key: SENDGRID_CONFIG['SENDGRID_API_KEY'])
       response = sg.client.mail._('send').post(request_body: mail.to_json)
     end

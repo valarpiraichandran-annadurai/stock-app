@@ -2,7 +2,7 @@ class StockPriceHistoryJob < ActiveJob::Base
   queue_as :default
 
   def perform(stock_symbol)
-    puts "Updating Realtime stock price...."
+    puts "Updating stock price history...."
     client = FinanceAPI::Base.client
 
     symbol_hash = {}

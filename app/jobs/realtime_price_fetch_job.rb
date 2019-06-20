@@ -36,7 +36,7 @@ end
 
 
 job = Sidekiq::Cron::Job.new(name: 'Realtime Stock price - every 3min',
-      cron: '*/5 * * * *', class: 'RealtimePriceFetchJob')
+      cron: '*/10 * * * *', class: 'RealtimePriceFetchJob')
 
 unless job.save
   puts job.errors # will return array of errors
