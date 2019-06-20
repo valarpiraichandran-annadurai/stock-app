@@ -6,6 +6,7 @@ class StockSymbolFetchJob < ActiveJob::Base
     puts "Updating Symbol list...."
     client = FinanceAPI::Base.client
 
+    # TODO - Handle API error
     @resp = client.get_symbol_list()[:body]
 
     if !@resp.key?("symbolsList")
@@ -34,6 +35,7 @@ class StockSymbolFetchJob < ActiveJob::Base
   end
 end
 
+# Manually run one time
 # Fetch all stock symbols at startup
 # StockSymbolFetchJob.perform_now
 # StockSymbolFetchJob.perform_later

@@ -1,12 +1,14 @@
-<nav class="navbar navbar-dark bg-dark">
+<header class="navbar navbar-dark bd-navbar bg-dark navbar-expand fixed-top">
     <%= link_to "Stock Price", root_path, :class => "navbar-brand" %>
-    <%= link_to "Home", root_path, :class => "nav-link" %>
-    <%= link_to "Users", users_path, :class => "nav-link" %>
-    <% if signed_in? %>
-    <%= link_to "Profile", current_user, :class => "nav-link" %>
-    <%= link_to "Sign out", signout_path, method: "delete", :class => "nav-link" %>
-    <% else %>
-    <%= link_to "Sign in", signin_path, :class => "nav-link" %>
-    <%= link_to "Sign Up", signup_path, :class => "nav-link" %>
-    <% end %>
-</nav>
+    <div class="navbar-nav bd-navbar flex-row">
+        <%= link_to "Home", root_path, :class => "nav-link" %>
+        <%= link_to "Users", users_path, :class => "nav-link" %>
+        <% if signed_in? %>
+        <%= link_to "Profile", current_user, :class => "nav-link" %>
+        <%= link_to "Sign out", signout_path, method: "delete", :class => "nav-link" %>
+        <% else %>
+        <%= link_to "Sign in", signin_path, :class => "nav-link" %>
+        <%= link_to "Sign Up", signup_path, :class => "nav-link" %>
+        <% end %>
+    </div>
+</header>

@@ -3,9 +3,12 @@ class RealtimePriceFetchJob < ActiveJob::Base
 
   def perform(*args)
     # Fetch realtime stock price every 3 minutes
+    # RealtimePriceFetchJob.set(wait: 1.minute).perform_later
+
     puts "Updating Realtime stock price...."
     client = FinanceAPI::Base.client
 
+    # TODO - Handle API error
     @resp = client.get_realtime_price_list()[:body]
 
     if !@resp.key?("stockList")
@@ -34,6 +37,7 @@ class RealtimePriceFetchJob < ActiveJob::Base
   end
 end
 
+# RealtimePriceFetchJob.set(wait: 1.minute).perform_later
 
 job = Sidekiq::Cron::Job.new(name: 'Realtime Stock price - every 3min',
       cron: '*/10 * * * *', class: 'RealtimePriceFetchJob')

@@ -14,6 +14,7 @@ class StockPriceHistoryJob < ActiveJob::Base
     end
 
     @stock_symbols.each do |stock_symbol|
+        # TODO - Handle API error
         @resp = client.get_price_history(symbol: stock_symbol.symbol)[:body]
 
         if !@resp.key?("historical")
