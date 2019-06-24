@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bcrypt-ruby', '3.1.2'
 
+gem 'factory_girl_rails', '~> 4.2.0'
+
 gem 'sendgrid-ruby'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
@@ -54,6 +56,7 @@ group :development, :test do
   gem 'sqlite3', '~> 1.3.6'
 
   gem 'rspec-rails', '~> 3.8'
+  gem 'guard-rspec', '~> 4.6.0'
 end
 
 group :development do

@@ -1,8 +1,8 @@
 development:
-  SENDGRID_API_KEY: <%= ENV["SENDGRID_API_KEY"] %>
+  SENDGRID_API_KEY: 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
 
 test:
-  SENDGRID_API_KEY: <%= ENV["SENDGRID_API_KEY"] %>
+  SENDGRID_API_KEY: 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
 
 # Do not keep production secrets in the repository,
 # instead read values from the environment.
