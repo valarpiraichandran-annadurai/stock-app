@@ -23,3 +23,6 @@ en:
   hello: "Hello world"
   company_list: "Company List"
   company_names: "Company Names"
+  stock_price: "Stock Price"
+  switch_locale: "Switch to English"
+  

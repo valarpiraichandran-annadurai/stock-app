@@ -2,4 +2,6 @@ es:
   hello: "Hola Mundo"
   company_list: "Lista de empresas"
   company_names: "Nombres de empresas"
+  stock_price: "Precio de mercado"
+  switch_locale: "Cambiar a español"
   

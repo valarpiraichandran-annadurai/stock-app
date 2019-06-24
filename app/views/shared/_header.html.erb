@@ -1,5 +1,5 @@
 <header class="navbar navbar-dark bd-navbar bg-dark navbar-expand fixed-top">
-    <%= link_to "Stock Price", root_path, :class => "navbar-brand" %>
+    <%= link_to t(:stock_price), root_path, :class => "navbar-brand" %>
     <div class="navbar-nav bd-navbar flex-row">
         <%= link_to "Home", root_path, :class => "nav-link" %>
         <%= link_to "Users", users_path, :class => "nav-link" %>
@@ -9,6 +9,11 @@
         <% else %>
         <%= link_to "Sign in", signin_path, :class => "nav-link" %>
         <%= link_to "Sign Up", signup_path, :class => "nav-link" %>
+        <% end %>
+        <% if I18n.locale.to_s == 'en' %>
+            <%= link_to t(:switch_locale), '?locale=es', :class => "nav-link" %>
+        <% else %>
+            <%= link_to t(:switch_locale), '?locale=en', :class => "nav-link" %>
         <% end %>
     </div>
 </header>
